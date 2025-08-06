@@ -19,9 +19,11 @@
     "react": "^19.1",
     "react-dom": "^19.1",
     "sanity": "^4.3.0",
+    "sanity-plugin-markdown": "^6.0.0",
     "styled-components": "^6.1.18"
   },
   "devDependencies": {
+    "@sanity/codegen": "^4.3.0",
     "@sanity/eslint-config-studio": "^5.0.2",
     "@types/react": "^19.1",
     "eslint": "^9.28",
