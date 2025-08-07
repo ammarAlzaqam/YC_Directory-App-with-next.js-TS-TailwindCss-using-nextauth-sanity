@@ -3,12 +3,15 @@ import { EyeIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./ui/button";
+import { Startup, Author } from "../../studio-jsm-yc-directory/sanity.types";
 
-export default function StartupCard({ post }: { post: any }) {
+export type StartupCardType = Omit<Startup, "author"> & { author?: Author };
+
+export default function StartupCard({ post }: { post: StartupCardType }) {
   const {
     _createdAt,
     views,
-    author: { _id: authorId, name },
+    author,
     _id,
     description,
     image,
@@ -27,16 +30,16 @@ export default function StartupCard({ post }: { post: any }) {
 
       <div className="flex-between mt-5 gap-5">
         <div className="flex-1">
-          <Link href={`/user/${authorId}`}>
-            <p className="text-16-medium line-clamp-1">{name}</p>
+          <Link href={`/user/${author?._id}`}>
+            <p className="text-16-medium line-clamp-1">{author?.name}</p>
           </Link>
           <Link href={`/startup/${_id}`}>
             <h3 className="text-26-semibold">{title}</h3>
           </Link>
         </div>
-        <Link href={`/user/${authorId}`}>
+        <Link href={`/user/${author?._id}`}>
           <Image
-            src="https://placehold.co/48x48"
+            src={author?.image!}
             alt="placeholder"
             width={48}
             height={48}
@@ -52,7 +55,7 @@ export default function StartupCard({ post }: { post: any }) {
       </Link>
 
       <div className="flex-between gap-3 mt-5">
-        <Link href={`/?query=${category.toLowerCase()}`}>
+        <Link href={`/?query=${category?.toLowerCase()}`}>
           <p className="text-16-medium">{category}</p>
         </Link>
         <Button className="startup-card_btn" asChild>
