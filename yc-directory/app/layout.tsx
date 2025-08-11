@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import React from "react";
+import { SanityLive } from "@/sanity/live";
 
 const workSans = localFont({
   src: [
@@ -67,6 +68,7 @@ export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="en">
       <body className={workSans.variable}>{children}</body>
+      <SanityLive />
     </html>
   );
 }

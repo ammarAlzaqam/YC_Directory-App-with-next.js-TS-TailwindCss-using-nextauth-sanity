@@ -11,7 +11,7 @@ export default defineConfig({
   projectId: '0o5f0wwj',
   dataset: 'production',
 
-  plugins: [structureTool(), visionTool(), markdownSchema()],
+  plugins: [structureTool(), visionTool({defaultApiVersion: 'vX'}), markdownSchema()],
 
   schema: {
     types: schemaTypes,
