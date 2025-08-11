@@ -1,7 +1,7 @@
 import SearchForm from "@/components/SearchForm";
 import StartupCard, { StartupCardType } from "@/components/StartupCard";
-import { client } from "@/sanity/client";
-import { STARTUP_QUERY } from "@/sanity/queries";
+import { sanityFetch, SanityLive } from "@/sanity/live";
+import { STARTUPS_QUERY } from "@/sanity/queries";
 
 export default async function Home({
   searchParams,
@@ -10,10 +10,18 @@ export default async function Home({
 }) {
   const { query } = await searchParams;
 
-  const posts = (await client.fetch(STARTUP_QUERY)) as StartupCardType[];
+  const params = { search: query || null };
+
+  const { data: posts } = (await sanityFetch({
+    query: STARTUPS_QUERY,
+    params,
+  })) as {
+    data: StartupCardType[];
+  };
 
   return (
     <>
+      {/*//! Header */}
       <section className="pink_container">
         <h1 className="heading">
           Pitch Your Startup, Connect with Entrepreneurs
@@ -24,6 +32,7 @@ export default async function Home({
         <SearchForm query={query} />
       </section>
 
+      {/*//! Startup cards */}
       <section className="section_container">
         <p className="text-30-semibold">
           {query ? `Search result for "${query}"` : "All Startups"}
@@ -38,6 +47,7 @@ export default async function Home({
           )}
         </ul>
       </section>
+      <SanityLive />
     </>
   );
 }
