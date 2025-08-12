@@ -1,3 +1,4 @@
+import { auth } from "@/auth";
 import SearchForm from "@/components/SearchForm";
 import StartupCard, { StartupCardType } from "@/components/StartupCard";
 import { sanityFetch, SanityLive } from "@/sanity/live";
@@ -18,6 +19,10 @@ export default async function Home({
   })) as {
     data: StartupCardType[];
   };
+
+  const session = await auth();
+
+  console.log(session?.id);
 
   return (
     <>
