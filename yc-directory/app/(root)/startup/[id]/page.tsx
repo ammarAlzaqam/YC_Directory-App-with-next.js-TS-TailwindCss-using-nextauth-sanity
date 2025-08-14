@@ -10,7 +10,7 @@ import { Suspense } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import View from "@/components/View";
 
-export const experimental_ppr = true;
+export const ppr = true;
 
 export default async function StartupById({
   params,

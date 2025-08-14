@@ -20,10 +20,6 @@ export default async function Home({
     data: StartupCardType[];
   };
 
-  const session = await auth();
-
-  console.log(session?.id);
-
   return (
     <>
       {/*//! Header */}
