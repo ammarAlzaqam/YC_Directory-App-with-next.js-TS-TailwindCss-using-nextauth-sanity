@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import React from "react";
 import { SanityLive } from "@/sanity/live";
+import { Toaster } from "sonner";
 
 const workSans = localFont({
   src: [
@@ -67,8 +68,11 @@ export interface LayoutProps {
 export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="en">
-      <body className={workSans.variable}>{children}</body>
-      <SanityLive />
+      <body className={workSans.variable}>
+        {children}
+        <Toaster richColors position="top-center" closeButton />
+        <SanityLive />
+      </body>
     </html>
   );
 }

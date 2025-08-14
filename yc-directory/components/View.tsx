@@ -27,7 +27,9 @@ export default async function View({ id }: { id: string }) {
       </div>
 
       <p className="view-text">
-        <span className="font-black">{formateNumber(totalViews, "view")}</span>
+        <span className="font-black">
+          {formateNumber(totalViews || 0, "view")}
+        </span>
       </p>
     </div>
   );
