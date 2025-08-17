@@ -1,6 +1,6 @@
-import { StartupCardType } from "@/components/StartupCard";
+import StartupCard, { StartupCardType } from "@/components/StartupCard";
 import { client } from "@/sanity/client";
-import { STARTUP_BY_ID_QUERY } from "@/sanity/queries";
+import { PLAYLIST_BUY_SLUG_QUERY, STARTUP_BY_ID_QUERY } from "@/sanity/queries";
 import { notFound } from "next/navigation";
 import formatDate from "@/utils/formatDate";
 import Link from "next/link";
@@ -19,9 +19,12 @@ export default async function StartupById({
 }) {
   const { id } = await params;
 
-  const post = (await client.fetch(STARTUP_BY_ID_QUERY, {
-    id,
-  })) as StartupCardType;
+  const [post, { title, select: editorPosts }] = await Promise.all([
+    client.fetch(STARTUP_BY_ID_QUERY, {
+      id,
+    }),
+    client.fetch(PLAYLIST_BUY_SLUG_QUERY, { slug: "editor-picks" }),
+  ]);
 
   if (!post) notFound();
 
@@ -87,7 +90,16 @@ export default async function StartupById({
 
         <hr className="divider" />
 
-        {/*//TODO: EDITOR SELECTED STARTUPS */}
+        {editorPosts?.length > 0 && (
+          <div className="max-w-4xl mx-auto">
+            <p className="text-30-semibold">{title}</p>
+            <ul className="mt-7 card_grid-sm">
+              {editorPosts.map((post: StartupCardType) => (
+                <StartupCard key={post._id} post={post} />
+              ))}
+            </ul>
+          </div>
+        )}
 
         <Suspense fallback={<Skeleton className="view_skeleton" />}>
           <View id={id} />
