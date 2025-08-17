@@ -35,13 +35,13 @@ const UserStatus = async () => {
   return session ? (
     <>
       <Link href="/startup/create">
-        <span className="max-sm: hidden">Create</span>
+        <span className="max-sm:hidden">Create</span>
         <BadgePlus className="size-6 sm:hidden" />
       </Link>
 
       <form action={signOutAction} className="">
         <button type="submit" className="flex cursor-pointer">
-          <span className="max-sm: hidden">Logout</span>
+          <span className="max-sm:hidden">Logout</span>
         </button>
         <button type="submit" className="flex cursor-pointer">
           <LogOut className="size-6 sm:hidden text-red-500" />
