@@ -11,8 +11,7 @@
   "packageManager": "npm@11.3.0",
   "overrides": {
     "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "next": "$next"
+    "react-dom": "19.1.0"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.10",
@@ -24,7 +23,7 @@
     "clsx": "^2.1.1",
     "lucide-react": "^0.536.0",
     "markdown-it": "^14.1.0",
-    "next": "^15.4.6",
+    "next": "^15.4.2-canary.51",
     "next-auth": "^5.0.0-beta.29",
     "next-sanity": "^10.1.0-canary.10",
     "react": "19.1.0",
