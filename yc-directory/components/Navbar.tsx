@@ -6,8 +6,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 export default async function Navbar() {
   return (
-    <header className="px-5 py-3 bg-white shadow-sm font-work-sans animate-top">
-      <nav className="flex-between ">
+    <header className="px-5 py-3 h-20 flex justify-center items-center bg-white font-work-sans animate-zoom-in">
+      <nav className="flex-between w-full">
         <Link href="/">
           <Image src="/logo.png" alt="logo" width={144} height={30} />
         </Link>
@@ -39,9 +39,13 @@ const UserStatus = async () => {
         <BadgePlus className="size-6 sm:hidden" />
       </Link>
 
-      <form action={signOutAction}>
-        <span className="max-sm: hidden">Logout</span>
-        <LogOut className="size-6 sm:hidden text-red-500" />
+      <form action={signOutAction} className="">
+        <button type="submit" className="flex cursor-pointer">
+          <span className="max-sm: hidden">Logout</span>
+        </button>
+        <button type="submit" className="flex cursor-pointer">
+          <LogOut className="size-6 sm:hidden text-red-500" />
+        </button>
       </form>
 
       <Link href={`/user/${session.id}`}>
@@ -56,7 +60,9 @@ const UserStatus = async () => {
     </>
   ) : (
     <form action={signInAction}>
-      <button type="submit">Login</button>
+      <button className="cursor-pointer" type="submit">
+        Login
+      </button>
     </form>
   );
 };
