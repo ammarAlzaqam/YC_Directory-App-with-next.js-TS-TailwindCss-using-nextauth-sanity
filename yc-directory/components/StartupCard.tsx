@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { Startup, Author } from "@/sanity.types";
+import { cn } from "@/lib/utils";
+import { Skeleton } from "./ui/skeleton";
 
 export type StartupCardType = Omit<Startup, "author"> & { author?: Author };
 
@@ -55,7 +57,6 @@ export default function StartupCard({ post }: { post: StartupCardType }) {
 
         {/*//! des & img */}
         <Link href={`/startup/${_id}`}>
-
           <p className="startup-card_desc">{description}</p>
 
           <img src={image} alt="placeholder" className="startup-card_img" />
@@ -74,3 +75,13 @@ export default function StartupCard({ post }: { post: StartupCardType }) {
     </div>
   );
 }
+
+export const StartupCardSkeleton = () => (
+  <>
+    {[0, 1, 2, 3, 4].map((index: number) => (
+      <li key={cn("skelton", index)}>
+        <Skeleton className="startup-card_skeleton" />
+      </li>
+    ))}
+  </>
+);
