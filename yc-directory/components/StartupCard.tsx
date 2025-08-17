@@ -3,7 +3,7 @@ import { EyeIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./ui/button";
-import { Startup, Author } from "../../studio-jsm-yc-directory/sanity.types";
+import { Startup, Author } from "@/sanity.types";
 
 export type StartupCardType = Omit<Startup, "author"> & { author?: Author };
 
