@@ -22,7 +22,7 @@ export default function StartupCard({ post }: { post: StartupCardType }) {
   } = post;
   return (
     <div className="overflow-hidden startup-card group ">
-      <li className="animate-left">
+      <li className="animate-top">
         {/*//! Data & views */}
         <div className="flex-between">
           <p className="startup_card_data">{formatDate(_createdAt)}</p>
