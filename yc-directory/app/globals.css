@@ -72,8 +72,12 @@
     @apply animate-in slide-in-from-left-32 duration-700;
   }
 
-  .animate-zoom {
-    @apply animate-in zoom-in duration-300;
+  .animate-zoom-in {
+    @apply animate-in zoom-in-70 duration-700;
+  }
+
+  .animate-zoom-out {
+    @apply animate-in zoom-in-150 duration-700;
   }
 
   .pink_container {
