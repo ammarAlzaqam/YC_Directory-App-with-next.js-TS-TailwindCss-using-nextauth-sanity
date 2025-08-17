@@ -30,7 +30,7 @@ const UserStatus = async () => {
     await signOut({ redirectTo: "/" });
   };
 
-  return session?.user ? (
+  return session ? (
     <>
       <Link href="/startup/create">
         <span>Create</span>
@@ -40,7 +40,7 @@ const UserStatus = async () => {
         <button type="submit">Logout</button>
       </form>
 
-      <Link href={`/user/${session.user.id}`}>
+      <Link href={`/user/${session.id}`}>
         <span>
           Welcome,{" "}
           <span className="text-cyan-400 text-shadow-sm">
